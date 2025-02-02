@@ -1,0 +1,256 @@
+.blogPost {
+    background-color: white;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-width: fit-content;
+    margin: 2rem auto;
+    padding: 2rem;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .blogPost:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .author {
+    font-size: 0.875rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .content {
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 1rem 0;
+    white-space: pre-wrap;
+  }
+  
+  .mainHeader {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+    border-bottom: none; /* Remove the border we added earlier */
+  }
+  
+  .createdAt {
+    font-size: 0.875rem;
+    color: #718096;
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+  
+  .postBtn {
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .postBtn:hover {
+    background-color: #2980b9;
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.5rem;
+    padding: 0;
+    z-index: 1;
+    margin-top: 0.5rem;
+    border: 1px solid #e2e8f0;
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .dropdown:hover .dropdownContent,
+    .dropdownContent:hover {
+    display: block;
+    }
+  
+    .newPostContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+  
+  .userImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+    margin: 0; /* Remove margin */
+  }
+  
+  /* Add these new styles for better visual hierarchy */
+  .navBar {
+    background-color: white;
+    padding: 1rem 2rem 1rem 2rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.75rem;
+  }
+  
+  /* Add this for better readability on light backgrounds */
+  body {
+    background-color: #f7f9fc;
+  }
+  
+  /* Style for delete button specifically */
+  .postBtn[type="submit"] {
+    background-color: #e53e3e;
+  }
+  
+  .postBtn[type="submit"]:hover {
+    background-color: #c53030;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .dropdownContent p {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+    font-size: 0.875rem;
+  }
+  
+  /* Style for the username specifically */
+  .dropdownContent p:first-child {
+    font-weight: 500;
+    color: #2d3748;
+    background-color: #f7fafc;
+  }
+  
+  /* Container for the logout button to match padding */
+  .dropdownContent div {
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Hover effect for the dropdown trigger */
+  .dropdown:hover .userImg {
+    box-shadow: 0 0 0 2px #3498db;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  /* Optional: Add this if you want to style the LogoutButton component */
+  .dropdownContent button {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+    color: #e53e3e;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .dropdownContent button:hover {
+    color: #c53030;
+  }
+
+  .dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 20px; /* This creates the invisible bridge */
+    background: transparent;
+  }
+  
+  .sortContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: 1rem;
+  }
+  
+  .sortbyLabel {
+    color: #4a5568;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-right: -0.5rem;
+  }
+  
+  .sortby {
+    appearance: none;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #2d3748;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234A5568'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.25rem;
+    transition: all 0.2s ease;
+  }
+  
+  .sortby:hover {
+    border-color: #cbd5e0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sortby:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  }
