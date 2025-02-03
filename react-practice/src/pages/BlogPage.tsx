@@ -2,6 +2,7 @@
 * TODO:
 * - CSS styling for attempting to edit another users blog
 * - CSS styling for attempting to delete another users blog
+* - Make create new button post larger
 **/
 
 import React from 'react'
@@ -95,6 +96,8 @@ const BlogPage = () => {
           setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
         } else if (sort =='title') {
           setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => a.title.localeCompare(b.title)));
+        } else if (sort == 'author') {
+          setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => a.author.localeCompare(b.author)))
         }
       }
 
@@ -179,6 +182,7 @@ const BlogPage = () => {
           <select name='sortby' className={styles.sortby} value={sort} onChange={handleChange}>
             <option value="lastCreated">Last Created</option>
             <option value="title">Title (A-Z)</option>
+            <option value = "author">Author (A-Z)</option>
           </select>
         </div>
       </div>
