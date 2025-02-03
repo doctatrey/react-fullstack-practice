@@ -25,7 +25,7 @@ const BlogPage = () => {
     const navigate = useNavigate()
     const [blogs, setBlogs] = useState<Blog[]>([])
     const [username, setUsername] = useState('')
-    const [sort, setSort] = useState<string>('lastCreated')
+    const [sort, setSort] = useState<string>('recent')
 
   // First useEffect: for token validation and username fetch
   useEffect(() => {
@@ -74,11 +74,9 @@ const BlogPage = () => {
         const fetchedBlogs = response.data;
         
         // Sort immediately after fetching
-        if (sort === 'lastCreated') {
+        if (sort === 'recent') {
           fetchedBlogs.sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-        } else if (sort === 'title') {
-          fetchedBlogs.sort((a,b) => a.title.localeCompare(b.title));
-        }
+        } 
         
         setBlogs(fetchedBlogs);
       } catch (err) {
@@ -87,17 +85,21 @@ const BlogPage = () => {
     };
   
     fetchAndSortBlogs();
-  }, [sort]);
+  }, []);
 
   // Third useEffect: for sorting blogs
     useEffect(() => {
       const sortBlogs = () => {
-        if (sort == 'lastCreated') {
+        if (sort == 'recent') {
           setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
         } else if (sort =='title') {
           setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => a.title.localeCompare(b.title)));
         } else if (sort == 'author') {
           setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => a.author.localeCompare(b.author)))
+        } else if (sort == 'oldest') {
+          setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()));
+        } else if (sort == 'titleDec') {
+          setBlogs(prevBlogs => [...prevBlogs].sort((a,b) => a.title.localeCompare(b.title)).reverse());
         }
       }
 
@@ -180,8 +182,10 @@ const BlogPage = () => {
         <div className={styles.sortContainer}>
           <label className={styles.sortbyLabel}>Sort by:</label>
           <select name='sortby' className={styles.sortby} value={sort} onChange={handleChange}>
-            <option value="lastCreated">Last Created</option>
+            <option value="recent">Recent</option>
+            <option value="oldest">Oldest</option>
             <option value="title">Title (A-Z)</option>
+            <option value="titleDec"> Title (Z-A)</option>
             <option value = "author">Author (A-Z)</option>
           </select>
         </div>

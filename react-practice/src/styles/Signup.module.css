@@ -1,5 +1,6 @@
 .container {
   margin-top: 10rem;
+  position: relative;
 }
 
 .header {
@@ -8,82 +9,156 @@
   font-size: 1.75rem;
   font-weight: bold;
   margin: 1.5rem 0;
+}
+
+.formContainer {
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.username,
+.email,
+.password {
+  width: 90%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #4a5568;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.username:focus,
+.email:focus,
+.password:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.username::placeholder,
+.email::placeholder,
+.password::placeholder {
+  color: #a0aec0;
+}
+
+.submit {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 0.25rem;
+}
+
+.submit:hover {
+  background-color: #2980b9;
+}
+
+.submit:active {
+  transform: translateY(1px);
+}
+
+.loginBtn {
+  display: block;
+  width: fit-content;
+  margin: -0.5rem auto;
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  color: #3498db;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.loginBtn:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Success State Styles */
+.successOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(52, 152, 219, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+}
+
+.successContainer {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  animation: popIn 0.6s ease;
+}
+
+.successIcon {
+  font-size: 4rem;
+  color: #2ecc71;
+  margin-bottom: 1rem;
+}
+
+.successMessage {
+  color: #2d3748;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.successSubMessage {
+  color: #718096;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.successButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.successButton:hover {
+  background-color: #2980b9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.7);
   }
-  
-  .formContainer {
-    max-width: fit-content;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+  to { 
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .username,
-  .email,
-  .password {
-    width: 90%;
-    padding: 0.75rem 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    color: #4a5568;
-    transition: border-color 0.2s ease;
-    outline: none;
-  }
-  
-  .username:focus,
-  .email:focus,
-  .password:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-  }
-  
-  .username::placeholder,
-  .email::placeholder,
-  .password::placeholder {
-    color: #a0aec0;
-  }
-  
-  .submit {
-    width: 100%;
-    padding: 0.6rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 0.25rem;
-  }
-  
-  .submit:hover {
-    background-color: #2980b9;
-  }
-  
-  .submit:active {
-    transform: translateY(1px);
-  }
-  
-  .loginBtn {
-    display: block;
-    width: fit-content;
-    margin: -0.5rem auto;
-    padding: 0.75rem 1.5rem;
-    background: none;
-    border: none;
-    color: #3498db;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  
-  .loginBtn:hover {
-    color: #2980b9;
-    text-decoration: underline;
-  }
+}
